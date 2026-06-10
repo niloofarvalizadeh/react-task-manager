@@ -9,7 +9,10 @@ import TaskModal from "./components/Modals/TaskModal";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-   const [selectedTask, setSelectedTask] = useState(null);
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+
 const { theme, setTheme } = useTheme();
 
      const openCreateModal = () => {
@@ -18,7 +21,7 @@ const { theme, setTheme } = useTheme();
      };
 
      const openEditModal = (task) => {
-       setSelectedTask(task); // دیتای تسک رو برای مودال ذخیره کن
+       setSelectedTask(task);
        setIsModalOpen(true);
      };
   return (
@@ -30,7 +33,10 @@ const { theme, setTheme } = useTheme();
           setTheme={setTheme}
         />
         <div className="flex h-full min-h-0">
-          <Sidebar />
+          <Sidebar
+            isOpen={isSidebarOpen}
+            onClose={() => setIsSidebarOpen(false)}
+          />
           <main className="flex-1 min-w-0 bg-gray-50 dark:bg-slate-950">
             <TaskBoard onEditTaskRequest={openEditModal} />
             <TaskModal

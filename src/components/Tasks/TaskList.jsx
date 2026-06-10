@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import TaskCard from "./TaskCard";
 import ConfirmModal from "../Modals/ConfirmModal";
-import { useTasks } from "./TaskContext"; // اگر از کانتکست استفاده می‌کنی
+import { useTasks } from "./TaskContext"; 
 
 const TaskList = ({ tasks, onEditTask }) => {
-  const { deleteTask } = useTasks(); // تابع حذف رو از کانتکست می‌گیریم
-
-  // استیت‌های مودال حذف
+  const { deleteTask } = useTasks(); 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
 
@@ -18,14 +16,14 @@ const TaskList = ({ tasks, onEditTask }) => {
     );
   }
 
-  // وقتی روی دکمه سطل آشغال در کارت کلیک شد
+
   const openDeleteConfirm = (task) => {
-    console.log("Opening modal for:", task.title); // این رو چک کن
+    console.log("Opening modal for:", task.title);
     setTaskToDelete(task);
     setIsDeleteModalOpen(true);
   };
 
-  // وقتی کاربر در مودال تایید، روی دکمه Delete زد
+
   const handleFinalDelete = () => {
     if (taskToDelete) {
       deleteTask(taskToDelete.id);
@@ -42,13 +40,11 @@ const TaskList = ({ tasks, onEditTask }) => {
             key={task.id}
             task={task}
             onEdit={() => onEditTask(task)}
-            // اینجا به جای فرستادن مستقیم ID، کلِ تسک رو می‌فرستیم به تابع بازکننده مودال
             onDelete={() => openDeleteConfirm(task)}
           />
         ))}
       </div>
 
-      {/* مودال تایید حذف */}
       <ConfirmModal
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}

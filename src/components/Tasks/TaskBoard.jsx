@@ -23,7 +23,7 @@ const TaskBoard = ({ onEditTaskRequest }) => {
       matchesFilter = task.status === "completed";
     }
 
-    return matchesSearch && matchesFilter; // هر دو شرط باید برقرار باشن
+    return matchesSearch && matchesFilter;
   });
 
   return (

@@ -8,14 +8,14 @@ import {
 const TaskCard = ({ task, onEdit, onDelete }) => {
   const isCompleted = task.status === "completed";
   return (
-    <div className="bg-white hover:bg-amber-200/50 p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md  transition-all duration-500 ease-in-out flex items-start gap-6">
+    <div className="bg-white hover:bg-amber-200/50 p-4 md:p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-500 ease-in-out flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
       {/* title  */}
-      <div className="flex-1 flex flex-col gap-1">
+      <div className="flex-1 flex flex-col gap-1 w-full">
         <h3 className="font-semibold text-gray-800">{task.title}</h3>
         <p className="text-sm text-gray-500 mb-4">{task.description}</p>
       </div>
       {/* details & Date*/}
-      <div className="flex flex-col items-end gap-2 min-w-25">
+      <div className="flex items-center justify-between md:flex-col md:items-end gap-2 w-full md:w-auto">
         <span
           className={`px-4 py-2 text-xs rounded-md ${
             isCompleted
@@ -31,7 +31,7 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
         </div>
       </div>
       {/* buttons */}
-      <div className="flex items-center justify-center h-full gap-2">
+      <div className="flex justify-end md:justify-center gap-2 w-full md:w-auto">
         <button onClick={onEdit} className="text-gray-400 hover:text-blue-600">
           <PencilSquareIcon className="size-6" />
         </button>
